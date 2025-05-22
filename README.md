@@ -29,7 +29,12 @@ response = requests.get(url)
 
 **Example call how to receive data using Python:**
 ```
-print(response.json())
+data = response.json()
+
+for entry in data["debt_in_year_range"]:
+  year = entry["year"]
+  debt = float(entry["debt])
+  print(f"The debt for {year} was ${debt:,.2f}")
 ```
 
 ***Once data is parsed, the structured of the data will be an object and a given key wich will contain
